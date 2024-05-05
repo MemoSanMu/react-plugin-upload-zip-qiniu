@@ -1,3 +1,3 @@
-import { get } from './request';
+import { get } from './request'
 
-export const getHome = () => get('/api/home');
+export const getHome = () => get('/api/home')

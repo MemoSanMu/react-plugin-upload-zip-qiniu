@@ -24,6 +24,7 @@
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "css-loader": "^6.5.1",
     "css-minimizer-webpack-plugin": "^3.2.0",
+    "dayjs": "^1.11.11",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
     "eslint": "^8.3.0",
@@ -71,7 +72,8 @@
     "test": "node scripts/test.js",
     "lint:fix": "eslint --fix --ext .js,.ts,.jsx,.tsx src",
     "prepare": "husky",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "release": "standard-version"
   },
   "husky": {
     "hooks": {
@@ -80,11 +82,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.{css,less,scss}": [
+    "src/**/*.{js,jsx,ts,tsx,json,css}": [
+      "eslint --fix --ext .js,.ts,jsx,tsx src",
       "prettier --write"
     ]
   },
@@ -168,6 +167,8 @@
     }
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/lodash-es": "^4.17.12",
     "adm-zip": "^0.5.12",
     "commitizen": "^4.3.0",
