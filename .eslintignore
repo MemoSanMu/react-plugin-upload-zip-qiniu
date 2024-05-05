@@ -1,0 +1,11 @@
+# 忽略文件或文件夹
+node_modules
+public
+scripts
+config
+build
+dist
+.husky/
+
+
+

@@ -1,6 +1,6 @@
-import RouterView from './router';
+import RouterView from './router'
 
-import './App.css';
+import './App.css'
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       </header>
       <RouterView />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
