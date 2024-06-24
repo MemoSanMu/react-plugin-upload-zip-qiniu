@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+
 // 一、 useCountDown;
 
 // 描述
@@ -9,7 +10,7 @@ import { useState, useRef, useEffect } from 'react'
 
 function useCountDown(defaultVal: number) {
   const [count, setCount] = useState<number>(defaultVal)
-  const refTimer = useRef<any>()
+  const refTimer = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     return () => {
@@ -18,20 +19,25 @@ function useCountDown(defaultVal: number) {
   }, [])
 
   function stop() {
-    clearInterval(refTimer.current)
+    if (refTimer.current) {
+      clearInterval(refTimer.current)
+      refTimer.current = null
+    }
   }
 
   function handleStart() {
-    refTimer.current = setInterval(() => {
-      setCount((val: number) => {
-        const newVal = val - 1
-        if (newVal === 0) {
-          stop()
-          return defaultVal
-        }
-        return newVal
-      })
-    }, 1000)
+    if (!refTimer.current) {
+      refTimer.current = setInterval(() => {
+        setCount((val: number) => {
+          const newVal = val - 1
+          if (newVal === 0) {
+            stop()
+            return defaultVal
+          }
+          return newVal
+        })
+      }, 1000)
+    }
   }
 
   return [count, handleStart] as const

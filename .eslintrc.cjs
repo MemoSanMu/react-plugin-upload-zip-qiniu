@@ -30,7 +30,7 @@ module.exports = {
       version: 'detect',
     },
   },
-  globals: {},
+  globals: { NodeJS: 'readonly' },
   /*
    * "off" 或 0    ==>  关闭规则
    * "warn" 或 1   ==>  打开的规则作为警告（不影响代码执行）
