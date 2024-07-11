@@ -1,4 +1,5 @@
 import RouterView from './router'
+import Father from './components/Log'
 
 import './App.css'
 
@@ -9,6 +10,7 @@ function App() {
         <div>this is header</div>
       </header>
       <RouterView />
+      <Father />
     </div>
   )
 }
